@@ -1017,7 +1017,7 @@
           Complete Property Management Solution
         </p>
         <p class="text-gray-500 mb-2">
-          © 2024 RentEase by Shivam Gupta. All rights reserved.
+          © <span id="datetime"></span> RentEase by Shivam Gupta. All rights reserved.
         </p>
         <p class="text-gray-500">
           Atarra, Uttar Pradesh | 24/7 Support Available
@@ -1133,6 +1133,9 @@
           el.style.transform = `translateY(${scrolled * speed}px)`;
         });
       });
+
+      // datetime ke liye 
+       document.getElementById("datetime").innerHTML =new Date().getFullYear();
     </script>
   </body>
 </html>
