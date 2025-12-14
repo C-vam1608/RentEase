@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentEase - Complete Property Management Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        background: #0a0a0a;
+      }
+
+      /* Bajrangi Gradient */
+      .bajrangi-gradient {
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #ff8c42 25%,
+          #ffa459 50%,
+          #ffb570 75%,
+          #ff6b35 100%
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Glassmorphism */
+      .glass {
+        background: rgba(255, 107, 53, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 107, 53, 0.2);
+      }
+
+      .glass-white {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 107, 53, 0.3);
+      }
+
+      /* 3D Card Effect */
+      .card-3d {
+        transform-style: preserve-3d;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .card-3d:hover {
+        transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+        box-shadow: 0 30px 60px rgba(255, 107, 53, 0.4);
+      }
+
+      /* Floating Animation */
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+        50% {
+          transform: translateY(-40px) rotate(-2deg);
+        }
+        75% {
+          transform: translateY(-20px) rotate(1deg);
+        }
+      }
+
+      /* Neon Glow */
+      .neon-glow {
+        text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35, 0 0 30px #ff6b35,
+          0 0 40px #ff8c42;
+        animation: neonPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes neonPulse {
+        0%,
+        100% {
+          text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35, 0 0 30px #ff6b35;
+        }
+        50% {
+          text-shadow: 0 0 20px #ff6b35, 0 0 30px #ff8c42, 0 0 40px #ffa459,
+            0 0 50px #ffb570;
+        }
+      }
+
+      /* Particle Background */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #ff6b35;
+        border-radius: 50%;
+        animation: particleFloat 20s infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      /* Image Placeholder Styling */
+      .img-placeholder {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border: 3px dashed rgba(255, 107, 53, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .img-placeholder::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 107, 53, 0.1),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) translateY(-100%);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%);
+        }
+      }
+
+      /* Morphing Button */
+      .morph-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .morph-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .morph-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .morph-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.5);
+      }
+
+      /* Text Reveal Animation */
+      .text-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: revealText 1s forwards;
+      }
+
+      @keyframes revealText {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Feature Icon Bounce */
+      .feature-icon {
+        animation: iconBounce 2s infinite;
+      }
+
+      @keyframes iconBounce {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.1);
+        }
+      }
+
+      /* Pricing Card Special */
+      .pricing-special {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-special::after {
+        content: "⭐";
+        position: absolute;
+        font-size: 100px;
+        opacity: 0.1;
+        top: -20px;
+        right: -20px;
+        animation: rotateStar 10s linear infinite;
+      }
+
+      @keyframes rotateStar {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        animation: scrollBounce 2s infinite;
+      }
+
+      @keyframes scrollBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(20px);
+        }
+      }
+
+      /* Nav Link Animation */
+      .nav-link-animated {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link-animated::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: -5px;
+        left: 50%;
+        background: #ffb570;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .nav-link-animated:hover::after {
+        width: 100%;
+      }
+
+      /* Section Divider */
+      .section-divider {
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #ff6b35,
+          #ff8c42,
+          #ffa459,
+          transparent
+        );
+        animation: dividerGlow 3s infinite;
+      }
+
+      @keyframes dividerGlow {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+          box-shadow: 0 0 20px #ff6b35;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-12 h-12 bajrangi-gradient rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+            >
+              RE
+            </div>
+            <span class="text-white text-2xl font-bold neon-glow"
+              >RentEase</span
+            >
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >Home</a
+            >
+            <a
+              href="#features"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >Features</a
+            >
+            <a
+              href="#gallery"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >Gallery</a
+            >
+            <a
+              href="#pricing"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >Pricing</a
+            >
+            <a
+              href="#about"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >About</a
+            >
+            <a
+              href="#contact"
+              class="text-white nav-link-animated hover:text-orange-400 font-semibold"
+              >Contact</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+            ☰
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+          <a href="#home" class="block text-white py-2 hover:text-orange-400"
+            >Home</a
+          >
+          <a
+            href="#features"
+            class="block text-white py-2 hover:text-orange-400"
+            >Features</a
+          >
+          <a href="#gallery" class="block text-white py-2 hover:text-orange-400"
+            >Gallery</a
+          >
+          <a href="#pricing" class="block text-white py-2 hover:text-orange-400"
+            >Pricing</a
+          >
+          <a href="#about" class="block text-white py-2 hover:text-orange-400"
+            >About</a
+          >
+          <a href="#contact" class="block text-white py-2 hover:text-orange-400"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden"
+    >
+      <div class="absolute inset-0 bajrangi-gradient opacity-20"></div>
+
+      <div class="container mx-auto relative z-10">
+        <div class="text-center max-w-5xl mx-auto">
+          <!-- Logo Placeholder -->
+          <div class="mb-8 float-animation">
+            <div
+              class="w-40 h-40 mx-auto img-placeholder rounded-3xl shadow-2xl"
+            >
+              <div class="text-center">
+                <div class="text-6xl mb-2">
+                  <img src="images/image.png" alt="" />
+                </div>
+                <!-- <p class="text-orange-400 text-sm font-bold">RentEase Logo</p> -->
+              </div>
+            </div>
+          </div>
+
+          <h1
+            class="text-6xl md:text-8xl font-black text-white mb-6 text-reveal neon-glow"
+          >
+            RentEase
+          </h1>
+          <p
+            class="text-3xl md:text-5xl font-bold mb-4 text-reveal"
+            style="animation-delay: 0.2s"
+          >
+            <span class="text-orange-400">प्रॉपर्टी मैनेजमेंट</span>
+            <span class="text-white">को बनाएं</span>
+          </p>
+          <p
+            class="text-3xl md:text-5xl font-bold text-orange-300 mb-8 text-reveal"
+            style="animation-delay: 0.4s"
+          >
+            आसान और सरल! ✨
+          </p>
+          <p
+            class="text-xl md:text-2xl text-gray-300 mb-12 text-reveal"
+            style="animation-delay: 0.6s"
+          >
+            PG, Hostel और Rental Properties को मैनेज करें - सब एक ही जगह से
+          </p>
+
+          <div
+            class="flex flex-wrap justify-center gap-6 text-reveal"
+            style="animation-delay: 0.8s"
+          >
+            <a
+              href="#contact"
+              class="morph-btn bajrangi-gradient text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl relative z-10"
+            >
+              🚀 अभी शुरू करें
+            </a>
+            <a
+              href="#features"
+              class="morph-btn glass-white text-orange-600 px-10 py-5 rounded-full font-bold text-xl shadow-2xl relative z-10"
+            >
+              📱 Features देखें
+            </a>
+          </div>
+
+          <div class="mt-16 scroll-indicator">
+            <div class="text-orange-400 text-4xl">⬇</div>
+            <p class="text-gray-400 text-sm mt-2">Scroll करें और जानें</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Gallery/Screenshot Section -->
+    <section id="gallery" class="py-20 px-6 relative">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-4 neon-glow">
+            देखें RentEase को Action में 🎯
+          </h2>
+          <p class="text-xl text-gray-400">Screenshots और Images</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Image Placeholder 1 -->
+          <div class="card-3d glass-white rounded-3xl p-4 shadow-2xl">
+            <div class="img-placeholder rounded-2xl h-64 mb-4">
+              <div class="text-center">
+                <div class="text-5xl mb-2">
+                  <img src="images/5.png" alt="" />
+                </div>
+                <p class="text-orange-400 font-bold">Dashboard Screenshot</p>
+                <!-- <p class="text-gray-500 text-sm mt-2">1200x800px recommended</p> -->
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center">
+              Property Dashboard
+            </h3>
+          </div>
+
+          <!-- Image Placeholder 2 -->
+          <div class="card-3d glass-white rounded-3xl p-4 shadow-2xl">
+            <div class="img-placeholder rounded-2xl h-64 mb-4">
+              <div class="text-center">
+                <div class="text-5xl mb-2">
+                  <img src="images/11.png" alt="" />
+                </div>
+                <p class="text-orange-400 font-bold">Tenant Management</p>
+                <!-- <p class="text-gray-500 text-sm mt-2">1200x800px recommended</p> -->
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center">
+              Tenant Management
+            </h3>
+          </div>
+
+          <!-- Image Placeholder 3 -->
+          <div class="card-3d glass-white rounded-3xl p-4 shadow-2xl">
+            <div class="img-placeholder rounded-2xl h-64 mb-4">
+              <div class="text-center">
+                <div class="text-5xl mb-2">
+                  <img src="images/13.png" alt="" />
+                </div>
+                <p class="text-orange-400 font-bold">Payment Tracking</p>
+                <!-- <p class="text-gray-500 text-sm mt-2">1200x800px recommended</p> -->
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center">
+              Payment History
+            </h3>
+          </div>
+        </div>
+
+        <!-- Large Banner Image Placeholder -->
+        <div class="mt-12 max-w-6xl mx-auto">
+          <div class="card-3d glass-white rounded-3xl p-6 shadow-2xl">
+            <div class="img-placeholder rounded-2xl h-96">
+              <div class="text-center">
+                <div class="text-7xl mb-4">
+                  <img src="images/image.png" alt="" />
+                </div>
+                <p class="text-orange-400 font-bold text-2xl">
+                  Main Banner / Hero Image
+                </p>
+                <p class="text-gray-500 text-lg mt-2">1920x800px recommended</p>
+                <p class="text-gray-400 text-sm mt-4">
+                  RentEase का main visual यहाँ add करें
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 relative">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-4 neon-glow">
+            शक्तिशाली Features 💪
+          </h2>
+          <p class="text-xl text-gray-400">सब कुछ जो आपको चाहिए एक ही जगह</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <!-- Feature Cards -->
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">🏘️</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Property Management
+            </h3>
+            <p class="text-gray-600">
+              Unlimited properties add, edit, delete करें पूरी details के साथ
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">🚪</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Room Management
+            </h3>
+            <p class="text-gray-600">
+              Rooms create करें, tenants assign करें, occupancy track करें
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">👥</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Tenant Management
+            </h3>
+            <p class="text-gray-600">
+              Complete tenant profiles documents और history के साथ
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">💰</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Payment Tracking
+            </h3>
+            <p class="text-gray-600">
+              Sari payments, dues, advances track करें instantly
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">🧮</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Split Calculator
+            </h3>
+            <p class="text-gray-600">
+              Expenses ko automatically divide करें tenants के बीच
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">📄</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Agreement Generator
+            </h3>
+            <p class="text-gray-600">
+              Professional rental agreements PDF में generate करें
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">📊</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">Activity Logs</h3>
+            <p class="text-gray-600">
+              Complete audit trail sabhi activities ka transparency ke liye
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">💸</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Expense Management
+            </h3>
+            <p class="text-gray-600">
+              Property maintenance aur operational expenses track करें
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+
+          <div class="card-3d glass-white p-8 rounded-3xl shadow-2xl group">
+            <div class="feature-icon text-6xl mb-4">🔄</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">
+              Regular Updates
+            </h3>
+            <p class="text-gray-600">
+              Continuous improvements aur naye features regularly
+            </p>
+            <div class="mt-4 h-1 w-20 bajrangi-gradient rounded"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-6 relative">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-4 neon-glow">
+            सरल Pricing Plans 💎
+          </h2>
+          <p class="text-xl text-gray-400">अपनी जरूरत के हिसाब से चुनें</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Basic Plan -->
+          <div class="card-3d glass-white rounded-3xl p-8 shadow-2xl">
+            <div class="text-center">
+              <div class="text-5xl mb-4">🌟</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-800">Basic</h3>
+              <div class="text-5xl font-black mb-2">
+                <span class="text-orange-500">₹3,000</span>
+              </div>
+              <p class="text-gray-500 mb-6">शुरुआत के लिए Perfect</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>1 Property</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Rooms</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Tenants</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>All Features</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>24/7 Support</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="morph-btn block text-center bajrangi-gradient text-white py-4 rounded-full font-bold text-lg"
+            >
+              चुनें Basic
+            </a>
+          </div>
+
+          <!-- Medium Plan - Featured -->
+          <div
+            class="card-3d pricing-special glass-white rounded-3xl p-8 shadow-2xl border-4 border-orange-400 transform scale-105"
+          >
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+              <div
+                class="bajrangi-gradient text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg"
+              >
+                🔥 MOST POPULAR
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-5xl mb-4">⭐</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-800">Medium</h3>
+              <div class="text-5xl font-black mb-2">
+                <span class="text-orange-500">₹5,000</span>
+              </div>
+              <p class="text-gray-500 mb-6">Growing Business के लिए</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span><strong>4 Properties</strong></span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Rooms</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Tenants</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>All Premium Features</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Priority Support</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="morph-btn block text-center bajrangi-gradient text-white py-4 rounded-full font-bold text-lg"
+            >
+              चुनें Medium
+            </a>
+          </div>
+
+          <!-- Premium Plan -->
+          <div class="card-3d glass-white rounded-3xl p-8 shadow-2xl">
+            <div class="text-center">
+              <div class="text-5xl mb-4">🚀</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-800">Premium</h3>
+              <div class="text-5xl font-black mb-2">
+                <span class="text-orange-500">₹8,000</span>
+              </div>
+              <p class="text-gray-500 mb-6">Professionals के लिए</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span><strong>Unlimited Properties</strong></span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Rooms</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Unlimited Tenants</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>All Features + Updates</span>
+              </li>
+              <li class="flex items-center text-gray-700">
+                <span class="text-green-500 mr-3 text-2xl">✓</span>
+                <span>Dedicated Support</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="morph-btn block text-center bajrangi-gradient text-white py-4 rounded-full font-bold text-lg"
+            >
+              चुनें Premium
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 relative">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-4 neon-glow">
+            Developer के बारे में 👨‍💻
+          </h2>
+        </div>
+
+        <div class="card-3d glass-white rounded-3xl shadow-2xl p-8 md:p-12">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div
+              class="w-40 h-50 bajrangi-gradient rounded flex items-center justify-center text-white text-6xl font-black shadow-2xl float-animation"
+            >
+              <img src="images/passport new.png" alt="" />
+            </div>
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="text-4xl font-black mb-2 text-gray-800">
+                Shivam Gupta
+              </h3>
+              <p class="text-xl text-orange-500 mb-4 font-bold">
+                Developer & Founder - RentEase
+              </p>
+              <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+                मैं property management को आसान और efficient बनाने के लिए
+                passionate हूं। RentEase को design किया गया है property owners,
+                hostel managers और PG operators की मदद के लिए। Continuous
+                updates और real user needs के basis पर, मैं RentEase को India का
+                best property management solution बनाने के लिए committed हूं।
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center justify-center md:justify-start">
+                  <span class="text-2xl mr-3">📍</span>
+                  <span class="text-gray-700 font-semibold"
+                    >Atarra, Uttar Pradesh</span
+                  >
+                </div>
+                <div class="flex items-center justify-center md:justify-start">
+                  <span class="text-2xl mr-3">📧</span>
+                  <a
+                    href="mailto:ramprasadg469@gmail.com"
+                    class="text-orange-500 font-semibold hover:underline"
+                    >ramprasadg469@gmail.com</a
+                  >
+                </div>
+                <div class="flex items-center justify-center md:justify-start">
+                  <span class="text-2xl mr-3">📱</span>
+                  <a
+                    href="tel:+918602507957"
+                    class="text-orange-500 font-semibold hover:underline"
+                    >+91 8602507957</a
+                  >
+                </div>
+                <div class="flex items-center justify-center md:justify-start">
+                  <span class="text-2xl mr-3">⏰</span>
+                  <span class="text-gray-700 font-semibold"
+                    >24/7 Support Available</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 relative">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-4 neon-glow">
+            संपर्क करें 📞
+          </h2>
+          <p class="text-xl text-gray-400">
+            आज ही अपनी Property Management को Transform करें!
+          </p>
+        </div>
+
+        <div class="card-3d glass-white rounded-3xl shadow-2xl p-8 md:p-12">
+          <div class="text-center mb-8">
+            <h3 class="text-3xl font-bold mb-4 text-gray-800">Contact Form</h3>
+            <p class="text-gray-600 text-lg">
+              नीचे दिया गया form भरें या सीधे संपर्क करें
+            </p>
+          </div>
+
+          <!-- Google Form Embed Area -->
+          <div
+            class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-8 mb-8 border-2 border-orange-200"
+          >
+            <div class="text-center">
+              <div class="text-6xl mb-4">📝</div>
+              <!-- <p class="text-gray-700 font-bold text-xl mb-4">
+                Google Form यहाँ Embed करें
+              </p>
+              <p class="text-gray-600 mb-4">
+                इस section को replace करें अपने Google Form के iframe से
+              </p> -->
+              <div class="bg-white rounded-lg p-6 shadow-inner">
+                <code class="text-sm text-orange-600 break-all">
+                  <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScW476LogvSDamFg_TA5d1JrJnM7msY6-sKN7oz3vs1Oo47FQ/viewform?embedded=true"
+                    width="640"
+                    height="1450"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    >Loading…</iframe
+                  >
+                 
+                </code>
+              </div>
+              <p class="text-gray-500 text-sm mt-4">
+                Google Form बनाने के बाद, Share → Send via link → Copy embed
+                code
+              </p>
+            </div>
+          </div>
+
+          <!-- Direct Contact Cards -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div
+              class="card-3d bajrangi-gradient p-6 rounded-2xl text-center shadow-xl"
+            >
+              <div class="text-5xl mb-3">📱</div>
+              <h4 class="font-bold text-white text-xl mb-2">कॉल करें</h4>
+              <a
+                href="tel:+918602507957"
+                class="text-white text-2xl font-bold hover:underline"
+                >+91 8602507957</a
+              >
+              <p class="text-white text-sm mt-2 opacity-90">
+                24/7 Support उपलब्ध
+              </p>
+            </div>
+
+            <div
+              class="card-3d bajrangi-gradient p-6 rounded-2xl text-center shadow-xl"
+            >
+              <div class="text-5xl mb-3">📧</div>
+              <h4 class="font-bold text-white text-xl mb-2">Email करें</h4>
+              <a
+                href="mailto:ramprasadg469@gmail.com"
+                class="text-white text-lg font-bold hover:underline break-all"
+                >ramprasadg469@gmail.com</a
+              >
+              <p class="text-white text-sm mt-2 opacity-90">
+                Quick Response की गारंटी
+              </p>
+            </div>
+          </div>
+
+          <!-- WhatsApp Button -->
+          <div class="mt-8 text-center">
+            <a
+              href="https://wa.me/918602507957?text=नमस्ते! मुझे RentEase के बारे में जानना है।"
+              target="_blank"
+              class="morph-btn inline-block bg-green-500 text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl"
+            >
+              <span class="text-2xl mr-2">💬</span> WhatsApp पर संपर्क करें
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 relative">
+      <div class="container mx-auto text-center">
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <div
+            class="w-16 h-16 bajrangi-gradient rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg float-animation"
+          >
+            RE
+          </div>
+          <span class="text-5xl font-black text-white neon-glow">RentEase</span>
+        </div>
+        <p class="text-gray-400 text-xl mb-6">
+          Complete Property Management Solution
+        </p>
+        <p class="text-gray-500 mb-2">
+          © 2024 RentEase by Shivam Gupta. All rights reserved.
+        </p>
+        <p class="text-gray-500">
+          Atarra, Uttar Pradesh | 24/7 Support Available
+        </p>
+        <div class="mt-6 flex justify-center space-x-6">
+          <a
+            href="#home"
+            class="text-orange-400 hover:text-orange-300 font-semibold"
+            >Home</a
+          >
+          <a
+            href="#features"
+            class="text-orange-400 hover:text-orange-300 font-semibold"
+            >Features</a
+          >
+          <a
+            href="#pricing"
+            class="text-orange-400 hover:text-orange-300 font-semibold"
+            >Pricing</a
+          >
+          <a
+            href="#contact"
+            class="text-orange-400 hover:text-orange-300 font-semibold"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Create Particles
+      const particlesContainer = document.getElementById("particles");
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDelay = Math.random() * 20 + "s";
+        particle.style.animationDuration = Math.random() * 10 + 15 + "s";
+        particlesContainer.appendChild(particle);
+      }
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+
+      // Scroll Reveal Animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0) rotateX(0)";
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".card-3d").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(50px) rotateX(-10deg)";
+        el.style.transition = "all 0.8s cubic-bezier(0.23, 1, 0.320, 1)";
+        observer.observe(el);
+      });
+
+      // 3D Tilt Effect on Cards
+      document.querySelectorAll(".card-3d").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+        });
+      });
+
+      // Parallax Effect on Scroll
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll(".float-animation");
+
+        parallaxElements.forEach((el) => {
+          const speed = 0.5;
+          el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+    </script>
+  </body>
+</html>
